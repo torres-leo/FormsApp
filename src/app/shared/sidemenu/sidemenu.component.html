@@ -1,0 +1,25 @@
+<h2 class="">Template</h2>
+<ul class="list-group pb-3 border-bottom">
+  <li
+    *ngFor="let item of templateItems"
+    class="list-group-item"
+    [routerLink]="item.path"
+    style="cursor: pointer"
+    routerLinkActive="active"
+  >
+    {{ item.text }}
+  </li>
+</ul>
+
+<h2>Reactive</h2>
+<ul class="list-group">
+  <li
+    *ngFor="let item of reactiveItems"
+    class="list-group-item"
+    [routerLink]="item.path"
+    style="cursor: pointer"
+    routerLinkActive="active"
+  >
+    {{ item.text }}
+  </li>
+</ul>
