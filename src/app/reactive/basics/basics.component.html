@@ -1,1 +1,81 @@
-<p>basics works!</p>
+<h3 class="p-3 border-bottom">Reactive: Basics</h3>
+
+<div class="row">
+  <div class="col">
+    <form (ngSubmit)="save()" [formGroup]="basicForm">
+      <div class="mb-3 row">
+        <label class="col-sm-3 col-form-label text-center fw-bold"
+          >Product</label
+        >
+        <div class="col-sm-9">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Product name"
+            formControlName="name"
+          />
+
+          <span *ngIf="errorMessages('name')" class="form-text text-danger">
+            Must be 3 letters min..
+          </span>
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <label class="col-sm-3 col-form-label text-center fw-bold">Price</label>
+        <div class="col-sm-9">
+          <input
+            type="number"
+            class="form-control"
+            placeholder="$"
+            formControlName="price"
+          />
+
+          <span *ngIf="errorMessages('price')" class="form-text text-danger">
+            Must be greather than 0..
+          </span>
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <label class="col-sm-3 col-form-label text-center fw-bold">Stock</label>
+        <div class="col-sm-9">
+          <input
+            type="number"
+            class="form-control"
+            name="stock"
+            formControlName="stock"
+          />
+
+          <span *ngIf="errorMessages('stock')" class="form-text text-danger">
+            Must be greather or equal to 0..
+          </span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <button type="submit" class="btn btn-primary float-end px-4 fw-bold">
+            Save
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <span>Valid - (pass all validations)</span>
+    <pre>{{ basicForm.valid }}</pre>
+
+    <span>Pristine - (original data was changed)</span>
+    <pre>{{ basicForm.pristine }}</pre>
+
+    <span>Touched - (any element into the form was pressed)</span>
+    <pre>{{ basicForm.touched }}</pre>
+
+    <span>Value</span>
+    <pre>{{ basicForm.value | json }}</pre>
+  </div>
+</div>

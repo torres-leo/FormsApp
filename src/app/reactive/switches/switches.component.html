@@ -1,7 +1,90 @@
-<!-- <h3 class="p-3 border-bottom">Template: Switches</h3>
+<h3 class="p-3 border-bottom">Reactive: Switches</h3>
 
 <div class="row">
   <div class="col">
-    <form #switchForm="ngForm"></form>
+    <form (ngSubmit)="saveForm()" [formGroup]="switchForm">
+      <!-- Radio -->
+      <div class="mb-3 row">
+        <label class="col-sm-3 col-form-label text-center fw-bold">
+          Gender
+        </label>
+        <div class="col-sm-9">
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              value="F"
+              id="radioFemale"
+              formControlName="gender"
+            />
+            <label class="form-check-label" for="radioFemale"> Female </label>
+          </div>
+
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              value="M"
+              id="radioMale"
+              formControlName="gender"
+            />
+            <label class="form-check-label" for="radioMale"> Male </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-3 row flex align-items-center">
+        <label class="col-sm-3 col-form-label text-center fw-bold">
+          Get Notifications
+        </label>
+        <div class="col-sm-9">
+          <div class="form-check form-switch mb-0">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              role="switch"
+              id="notificationSwitch"
+              formControlName="notifications"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-3 row flex align-items-center">
+        <label class="col-sm-3 col-form-label text-center fw-bold">
+          Terms and Conditions
+        </label>
+        <div class="col-sm-9">
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value=""
+              id="termsCondition"
+              formControlName="terms"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <button type="submit" class="btn btn-primary float-end">Save</button>
+        </div>
+      </div>
+    </form>
   </div>
-</div> -->
+</div>
+
+<div>
+  <p>Values Form</p>
+  <pre>{{ switchForm.value | json }}</pre>
+  <br />
+
+  <p>Valid</p>
+  <pre>{{ switchForm.valid }}</pre>
+  <br />
+
+  <p>Person</p>
+  <pre>{{ person | json }}</pre>
+</div>

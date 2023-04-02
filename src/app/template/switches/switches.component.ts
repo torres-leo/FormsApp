@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 export class SwitchesComponent {
   person = {
     gender: 'F',
-    notifications: true,
+    notifications: false,
   };
 
   termsCondition: boolean = false;
