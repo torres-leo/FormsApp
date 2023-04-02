@@ -1,0 +1,76 @@
+<h3>Reactive Validations</h3>
+
+<div class="row">
+	<div class="col">
+		<form autocomplete="off" (ngSubmit)="save()" [formGroup]="validationForm">
+			<div class="row mb-3">
+				<label class="col-sm-3 col-form-label fw-bold text-center">Name</label>
+				<div class="col-sm-9">
+					<input type="text" class="form-control" placeholder="First name & Last name" formControlName="name" />
+					<span *ngIf="invalidField('name')" class="form-text text-danger ms-2">
+						Must contain at least your first name and last name.
+					</span>
+				</div>
+			</div>
+
+			<div class="row mb-3">
+				<label class="col-sm-3 col-form-label fw-bold text-center">Email</label>
+				<div class="col-sm-9">
+					<input type="email" class="form-control" placeholder="example@chrome.com" formControlName="email" />
+					<span *ngIf="invalidField('email')" class="form-text text-danger ms-2"> {{ emailErrorMsg }} </span>
+				</div>
+			</div>
+
+			<div class="row mb-3">
+				<label class="col-sm-3 col-form-label fw-bold text-center">Username</label>
+				<div class="col-sm-9">
+					<input type="text" class="form-control" formControlName="username" />
+					<span *ngIf="invalidField('username')" class="form-text text-danger ms-2"> Can't be 'Strider'</span>
+				</div>
+			</div>
+
+			<div class="row mb-3">
+				<label class="col-sm-3 col-form-label fw-bold text-center">Password</label>
+				<div class="col-sm-9">
+					<input type="password" class="form-control" placeholder="*******" formControlName="password" />
+					<span *ngIf="invalidField('password')" class="form-text text-danger ms-2">
+						Must be at least 6 caracters
+					</span>
+				</div>
+			</div>
+
+			<div class="row mb-3">
+				<label class="col-sm-3 col-form-label fw-bold text-center">Confirm Password</label>
+				<div class="col-sm-9">
+					<input type="password" class="form-control" placeholder="*******" formControlName="confirmPassword" />
+					<span *ngIf="invalidField('confirmPassword')" class="form-text text-danger ms-2">
+						Passwords do not match
+					</span>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col">
+					<button
+						class="btn btn-primary float-end px-4 fw-semibold"
+						style="letter-spacing: 1px"
+						type="submit"
+						[disabled]="validationForm.invalid">
+						Save
+					</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col">
+		<p>Valid</p>
+		<pre>{{ validationForm.valid }}</pre>
+
+		<br />
+		<p>Values</p>
+		<pre>{{ validationForm.value | json }}</pre>
+	</div>
+</div>
